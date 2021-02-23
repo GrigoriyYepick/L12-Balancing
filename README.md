@@ -21,14 +21,14 @@ Response: 200 "Hello from US1 server"
 Request from US IP via VPN and NGrok<br>
 Response: 200 "Hello from US2 server"
 
-### Changed reposnse of UK server to 404<br>
-### Nginx Reload
+***Changed response of UK server to 404<br>
+Nginx Reload***
 
 Request from UK IP via VPN and NGrok<br>
 Response: 404 "Error"
 
-### Removed UK server from nginx.conf<br>
-### Nginx Reload
+***Removed UK server from nginx.conf<br>
+Nginx Reload***
 
 Request from UK IP via VPN and NGrok<br>
 Response: 200 "Hello from backup UK server"
