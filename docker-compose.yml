@@ -1,0 +1,80 @@
+version: '3.4'
+
+networks:    
+    vpcbr:
+      driver: bridge
+      ipam:
+         config:
+            - subnet: 10.5.0.0/16
+
+services:
+
+### Backup server ###################################
+    backup_server:
+      build:
+         context: ./App
+         dockerfile: ServerApi/Dockerfile_backup
+      container_name: backup_server
+      ports:
+        - "81:81"
+      volumes:
+        - ./servers/default_server.txt:/app/server.txt
+      networks:
+         vpcbr:
+           ipv4_address: 10.5.0.4
+
+### UK server ###################################
+    uk_server:
+      build:
+         context: ./App
+         dockerfile: ServerApi/Dockerfile_uk
+      container_name: uk_server
+      ports:
+        - "82:82"
+      volumes:
+        - ./servers/uk_server.txt:/app/server.txt
+      networks:
+         vpcbr:
+           ipv4_address: 10.5.0.5
+
+### US1 server ###################################
+    us1_server:
+      build:
+         context: ./App
+         dockerfile: ServerApi/Dockerfile_us1
+      container_name: us1_server
+      ports:
+        - "83:83"
+      volumes:
+        - ./servers/us1_server.txt:/app/server.txt
+      networks:
+         vpcbr:
+           ipv4_address: 10.5.0.6
+
+### US2 server ###################################
+    us2_server:
+      build:
+         context: ./App
+         dockerfile: ServerApi/Dockerfile_us2
+      container_name: us2_server
+      ports:
+        - "84:84"
+      volumes:
+        - ./servers/us2_server.txt:/app/server.txt
+      networks:
+         vpcbr:
+           ipv4_address: 10.5.0.7
+
+### NGINX Server #########################################
+    nginx:
+      build:
+        context: ./nginx       
+      container_name: nginx
+      volumes:
+        - ./nginx:/etc/nginx
+      ports:
+        - "80:80"
+        - "443:443"
+      networks:
+            vpcbr:
+              ipv4_address: 10.5.0.9
