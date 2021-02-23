@@ -32,3 +32,11 @@ Nginx Reload***
 
 Request from UK IP via VPN and NGrok<br>
 Response: 200 "Hello from backup UK server"
+
+### Bugs:
+
+Don't know how to fix, but when there is a request from IP that is contained / handled by geo.conf, but there is no specific upstream, there will be 502 Bad Gateway responce. In error.log there will be an error:
+
+***[error] 21#21: *34 no resolver defined to resolve RO.backend***
+
+I expected default upstream will pick such requests.
