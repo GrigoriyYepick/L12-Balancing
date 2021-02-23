@@ -1,4 +1,4 @@
-FROM nginx:alpine
+FROM firesh/nginx-lua
 
 COPY nginx.conf /etc/nginx/
 COPY geo.conf /etc/nginx/

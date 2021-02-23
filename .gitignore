@@ -1,9 +1,1 @@
-# Logs
-logs
-**.log
-
 **/nginx/cache
-**/obj/*
-**/bin/*
-**.suo
-App/.vs/Servers/v16/.suo
