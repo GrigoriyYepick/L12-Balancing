@@ -40,3 +40,5 @@ Don't know how to fix, but when there is a request from IP that is contained / h
 ***[error] 21#21: *34 no resolver defined to resolve RO.backend***
 
 I expected default upstream will pick such requests.
+
+***Solution - clean geo.conf and keep only counry codes we want to handle***
